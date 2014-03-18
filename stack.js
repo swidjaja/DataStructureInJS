@@ -1,54 +1,30 @@
-function Stack()
-{
+function Stack() {
 	this.data = [];
 }
 
-Stack.prototype =
-{
-	push: function(o)
-	{
+Stack.prototype = {
+
+	push: function(o) {
 		this.data.push(o);
 	},
 	
-	pop: function()
-	{
-		var temp;
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'stackIsEmpty',
-				message: 'Cannot do pop() on empty stack'
-			}
-		}
-		temp = this.data[this.data.length - 1];
-		this.data.length = this.data.length - 1;
-		return temp;
+	pop: function() {
+		return this.data.pop();
 	},
 	
-	size: function()
-	{
+	size: function() {
 		return this.data.length;
 	},
 	
-	isEmpty: function()
-	{
-		return this.data.length === 0;
+	isEmpty: function() {
+		return !this.data.length;
 	},
 	
-	empitfy: function()
-	{
+	emptify: function() {
 		this.data.length = 0;
 	},
 	
-	top: function()
-	{
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'stackIsEmpty',
-				message: 'Cannot do top() on empty stack'
-			}
-		}
-		return this.data[this.data.length - 1];
+	top: function() {
+		return this.data.length ? this.data[this.data.length - 1] : null;
 	}
 };

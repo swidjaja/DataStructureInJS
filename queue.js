@@ -1,52 +1,30 @@
-function Queue()
-{
+function Queue() {
 	this.data = [];
 }
 
-Queue.prototype =
-{
-	enqueue: function(o)
-	{
+Queue.prototype = {
+
+	enqueue: function(o) {
 		this.data.push(o);
 	},
 	
-	dequeue: function()
-	{
-		var temp;
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'QueueIsEmpty',
-				message: 'Cannot dequeue empty queue'
-			}
-		}
+	dequeue: function() {
 		return this.data.shift();
 	},
 	
-	size: function()
-	{
+	size: function() {
 		return this.data.length;
 	},
 	
-	isEmpty: function()
-	{
-		return this.data.length === 0;
+	isEmpty: function() {
+		return !this.data.length;
 	},
 	
-	empitfy: function()
-	{
+	emptify: function() {
 		this.data.length = 0;
 	},
 	
-	front: function()
-	{
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'stackIsEmpty',
-				message: 'Cannot do front() on empty queue'
-			}
-		}
-		return this.data[0];
+	front: function() {
+		return this.data.length ? this.data[0] : null;
 	}
 };
