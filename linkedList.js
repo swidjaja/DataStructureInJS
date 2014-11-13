@@ -1,74 +1,50 @@
-function linkedList() {
-	this.header = { data: null, next: null };
-	this.size = 0;
-}
+define(function(require) {
+    'use strict';
 
-linkedList.prototype = {
+    var Node = require('./Node');
 
-	isEmpty: function() {
-		return !this.size;
-	},
-	
-	empitfy: function() {
-		this.header.next = null;
-		this.size = 0;
-	},
-	
-	addFirst: function(o) {
-		var position = this.header,
-			currFirst = position.next;
-		position.next = { data: o, next: currFirst };
-		this.size++;
-	},
-	
-	addLast: function(o) {
-		var position = this.header;
-		while (position.next !== null)
-		{
-			position = position.next;
-		}
-		position.next = { data: o, next: null };
-		this.size++;
-	},
-	
-	removeFirst: function() {
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'LinkedListIsEmpty',
-				message: 'Cannot remove from empty linked list'
-			};
-		}
-		var position = this.header;
-		position.next = position.next.next;
-		this.size--;
-	},
-	
-	removeLast: function() {
-		if (this.isEmpty())
-		{
-			throw {
-				name: 'LinkedListIsEmpty',
-				message: 'Cannot remove from empty linked list'
-			};
-		}
-		var position = this.header;
-		while (position.next.next !== null)
-		{
-			position = position.next;
-		}
-		position.next = null;
-		this.size--;
-	},
-	
-	toArray: function() {
-		var out = [];
-		var position = this.header.next;
-		while (position !== null)
-		{
-			out.push(position.data);
-			position = position.next;
-		}
-		return out;
-	}
-};
+    function LinkedList() {
+        this.header = new Node(null, null);
+    }
+
+    LinkedList.prototype.isEmpty = function() {
+        return this.header.getNextNode() === null;
+    };
+
+    LinkedList.prototype.insert = function(node) {
+        var temp = this.header;
+
+        if (!this.isEmpty()) {
+            while (temp.getNextNode()) {
+                temp = temp.getNextNode();
+            }
+        }
+        temp.setNextNode(node);
+    };
+
+    LinkedList.prototype.reverse = function() {
+        if (!this.isEmpty()) {
+            var prev = this.header;
+            var next = this.header.getNextNode();
+            var nextNext;
+
+            while(next) {
+                nextNext = next.getNextNode();
+                next.setNextNode(prev.getItem() === null ? null : prev);
+                prev = next;
+                next = nextNext;
+            }
+            this.header.setNextNode(prev);
+        }
+    }
+
+    LinkedList.prototype.traverse = function() {
+        var temp = this.header.getNextNode();
+        while (temp) {
+            console.log(temp.getItem());
+            temp = temp.getNextNode();
+        }
+    };
+
+    return LinkedList;
+});

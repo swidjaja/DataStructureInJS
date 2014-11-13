@@ -1,30 +1,46 @@
-function Stack() {
-	this.data = [];
-}
+define(function(require) {
 
-Stack.prototype = {
+    'use strict';
+    
+    var items = [];
 
-	push: function(o) {
-		this.data.push(o);
-	},
-	
-	pop: function() {
-		return this.data.pop();
-	},
-	
-	size: function() {
-		return this.data.length;
-	},
-	
-	isEmpty: function() {
-		return !this.data.length;
-	},
-	
-	emptify: function() {
-		this.data.length = 0;
-	},
-	
-	top: function() {
-		return this.data.length ? this.data[this.data.length - 1] : null;
-	}
-};
+    function Stack() {}
+
+    Stack.prototype.size = function() {
+        return items.length;
+    };
+
+    Stack.prototype.push = function(item) {
+        items.push(item);
+        return this;
+    };
+
+    Stack.prototype.pop = function() {
+        if (!this.size()) {
+            throw new Error('Stack is Empty!');
+        }
+        return items.pop();
+    };
+
+    Stack.prototype.peek = function() {
+        if (!this.size()) {
+            throw new Error('Stack is Empty!');
+        }
+        return items[0];
+    };
+
+    Stack.prototype.emptify = function() {
+        items = [];
+        return this;
+    };
+
+    Stack.prototype.isEmpty = function() {
+        return items.length === 0;
+    };
+
+    Stack.prototype.toString = function() {
+        return items.join(' ');
+    };
+
+    return Stack;
+});
