@@ -1,46 +1,28 @@
-define(function(require) {
+function Stack() {
+  this.entries = [];
+}
 
-    'use strict';
-    
-    var items = [];
+Stack.prototype.push = function (value) {
+  this.entries.push(value);
+};
 
-    function Stack() {}
+Stack.prototype.pop = function () {
+  if (this.isEmpty()) {
+    throw new Error('Pop performed on empty stack');
+  }
+  return this.entries.pop();
+};
 
-    Stack.prototype.size = function() {
-        return items.length;
-    };
+Stack.prototype.peek = function () {
+  return this.entries[this.entries.length - 1];
+}
 
-    Stack.prototype.push = function(item) {
-        items.push(item);
-        return this;
-    };
+Stack.prototype.isEmpty = function () {
+  return this.entries.length === 0;
+};
 
-    Stack.prototype.pop = function() {
-        if (!this.size()) {
-            throw new Error('Stack is Empty!');
-        }
-        return items.pop();
-    };
+Stack.prototype.size = function () {
+  return this.entries.length;
+};
 
-    Stack.prototype.peek = function() {
-        if (!this.size()) {
-            throw new Error('Stack is Empty!');
-        }
-        return items[0];
-    };
-
-    Stack.prototype.emptify = function() {
-        items = [];
-        return this;
-    };
-
-    Stack.prototype.isEmpty = function() {
-        return items.length === 0;
-    };
-
-    Stack.prototype.toString = function() {
-        return items.join(' ');
-    };
-
-    return Stack;
-});
+module.exports = Stack;
