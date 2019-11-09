@@ -65,6 +65,35 @@ Graph.prototype.search = function (vertex1, vertex2) {
   return false;
 }
 
+Graph.prototype.dfs = function (startingVertex) {
+  const visited = new Map();
+
+  const dfsHelper = (graph, startingVertex, visited) => {
+    // Marked starting vertex as visited
+    visited.set(startingVertex, true);
+    graph.visit(startingVertex);
+
+    const vertices = graph.getAdjacencyVertices(startingVertex);
+    let vertex = vertices.shift();
+
+    while(vertex) {
+      // Recursively perform dfs on the adjacent vertices
+      if (!visited.get(vertex)) {
+        dfsHelper(graph, vertex, visited);
+      }
+      vertex = vertices.shift();
+    }
+  };
+
+  // Visited.keys -> returns iterable object
+  for (const key of visited.keys()) {
+    // Mark all vertices as not visited
+    visited.set(key, false);
+  }
+
+  dfsHelper(this, startingVertex, visited);
+}
+
 // O(E + V)
 Graph.prototype.bfs = function (startingVertex) {
   const visited = new Map();

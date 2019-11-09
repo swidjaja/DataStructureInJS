@@ -7,3 +7,6 @@ Implementations of some simple data structure in JavaScript
 - Stack
 - Linked List
 - Graph
+  - Adjacency list representation
+  - Breadth-first Search
+  - Depth-first Search
