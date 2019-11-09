@@ -48,7 +48,7 @@ const checkBalancedParantheses = (str) => {
   }
 });
 
-allFalse = [
+[
   '(()',
   '((())',
   '([)',
