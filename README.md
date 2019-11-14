@@ -10,3 +10,6 @@ Implementations of some simple data structure in JavaScript
   - Adjacency list representation
   - Breadth-first Search
   - Depth-first Search
+- Binary Heap
+  - Max-Heap
+  - Min-Heap
