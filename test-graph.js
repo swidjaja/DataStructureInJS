@@ -1,4 +1,4 @@
-const Graph = require('./graph-no-weight');
+const Graph = require('./graph');
 const Vertex = require('./lib/vertex');
 
 const elema = new Vertex('a');
@@ -11,7 +11,8 @@ const elemf = new Vertex('f');
 const callback = (vertex) => {
   console.log(`Vertex ${vertex.getValue()} has been visited!`);
 };
-const graph = new Graph(false, callback);
+
+const graph = new Graph(callback);
 graph.addVertex(elema);
 graph.addVertex(elemb);
 graph.addVertex(elemc);
