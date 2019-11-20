@@ -15,3 +15,4 @@ Implementations of some simple data structure in JavaScript
   - Max-Heap
   - Min-Heap
 - Priority Queue
+- BST
