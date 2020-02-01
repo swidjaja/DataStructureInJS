@@ -1,5 +1,5 @@
 const Graph = require('./graph');
-const Vertex = require('./lib/vertex');
+const Vertex = require('./vertex');
 
 const elema = new Vertex('a');
 const elemb = new Vertex('b');

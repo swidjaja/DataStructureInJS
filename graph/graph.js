@@ -1,6 +1,6 @@
-const Queue = require('./queue');
-const Edge = require('./lib/edge');
-const PriorityQueue = require('./priority-queue');
+const Queue = require('../queue/queue');
+const Edge = require('./edge');
+const PriorityQueue = require('../priority-queue');
 
 function Graph(visitedCallback = null) {
   this.adjacencyList = new Map();
