@@ -13,8 +13,8 @@ DllNode.prototype.getData = function () {
  * Double linked list with tail
  * Insertion (front/end): O(1)
  * Delete (front/end): O(1)
- * Random access: O(1)
- * Space: O(n) for the hashmap to store references to the nodes
+ * Random access: O(n)
+ * Space: O(1)
  */
 function Dll() {
   this.head = null;
